@@ -14,8 +14,11 @@ class Model
 		} elseif ($selected === 'normal') {
 			return new NormalPlan();
 
-		} else {
+		} elseif ($selected === 'large') {
 			return new LargePlan();
+
+		} else {
+			throw new Exception('選択値不正');
 		}
 	}
 }

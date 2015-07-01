@@ -7,6 +7,10 @@ $selected = trim(fgets(STDIN));
 
 $model = new Model();
 
-$plan = $model->getPlan($selected);
+try {
+	$plan = $model->getPlan($selected);
+	$plan->show();
 
-$plan->show();
+} catch (Exception $e) {
+	echo $e->getMessage();
+}
