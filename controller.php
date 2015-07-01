@@ -16,18 +16,30 @@ try {
 }
 
 
-echo 'plan? small/normal/large(/mega) : ';
-$inputtedPlan = trim(fgets(STDIN));
+echo 'current plan? small/normal/large(/mega) : ';
+$inputtedCurrentPlan = trim(fgets(STDIN));
 
 try {
-	$plan = $model->getPlan($account, $inputtedPlan);
+	$currentPlan = $model->getPlan($account, $inputtedCurrentPlan);
 
 } catch (Exception $e) {
 	echo $e->getMessage();
 	exit;
 }
 
+echo 'next plan? small/normal/large(/mega) : ';
+$inputtedNextPlan = trim(fgets(STDIN));
+
+try {
+	$nextPlan = $model->getPlan($account, $inputtedNextPlan);
+
+} catch (Exception $e) {
+	echo $e->getMessage();
+	exit;
+}
 echo "\n";
 
 $account->announce();
-$plan->show();
+
+$model->change($currentPlan, $nextPlan);
+$nextPlan->show();

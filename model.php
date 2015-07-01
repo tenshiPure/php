@@ -45,4 +45,9 @@ class Model
 			throw new Exception('選択値不正');
 		}
 	}
+
+	public function change(PlanBase $current, PlanBase $next)
+	{
+		echo "{$current->name}から{$next->name}に変更しました。\n";
+	}
 }

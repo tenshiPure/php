@@ -4,7 +4,7 @@ class PlanBase
 {
 	/** @var iAccount */
 	protected $account;
-	protected $name;
+	public $name;
 	protected $fee;
 	protected $volume;
 
