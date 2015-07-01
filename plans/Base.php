@@ -10,7 +10,7 @@ class PlanBase
 
 	public function show()
 	{
-		echo "選択したのは{$this->name}で月{$this->calcFee()}円、容量は{$this->volume}です。";
+		echo "選択したのは{$this->name}で月{$this->calcFee()}円、容量は{$this->volume}です。\n";
 	}
 
 	private function calcFee()

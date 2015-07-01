@@ -21,8 +21,13 @@ $inputtedPlan = trim(fgets(STDIN));
 
 try {
 	$plan = $model->getPlan($account, $inputtedPlan);
-	$plan->show();
 
 } catch (Exception $e) {
 	echo $e->getMessage();
+	exit;
 }
+
+echo "\n";
+
+$account->announce();
+$plan->show();
