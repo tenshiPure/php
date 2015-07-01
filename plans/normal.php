@@ -4,7 +4,7 @@ require_once 'Base.php';
 
 class NormalPlan extends PlanBase
 {
-	public function __construct($account)
+	public function __construct(iAccount $account)
 	{
 		$this->account = $account;
 		$this->fee = '5000';

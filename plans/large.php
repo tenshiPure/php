@@ -4,7 +4,7 @@ require_once 'Base.php';
 
 class LargePlan extends PlanBase
 {
-	public function __construct($account)
+	public function __construct(iAccount $account)
 	{
 		$this->account = $account;
 		$this->fee = '7000';
