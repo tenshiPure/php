@@ -6,6 +6,7 @@ require_once 'accounts/premium.php';
 require_once 'plans/small.php';
 require_once 'plans/normal.php';
 require_once 'plans/large.php';
+require_once 'plans/mega.php';
 
 class Model
 {
@@ -32,6 +33,13 @@ class Model
 
 		} elseif ($selected === 'large') {
 			return new LargePlan($account);
+
+		} elseif ($selected === 'mega') {
+			if (!$account->isPremium()) {
+				throw new Exception('メガプランはプレミアム会員のみです');
+			}
+
+			return new MegaPlan($account);
 
 		} else {
 			throw new Exception('選択値不正');

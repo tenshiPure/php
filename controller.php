@@ -16,7 +16,7 @@ try {
 }
 
 
-echo 'plan? small/normal/large : ';
+echo 'plan? small/normal/large(/mega) : ';
 $inputtedPlan = trim(fgets(STDIN));
 
 try {
