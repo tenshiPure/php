@@ -10,6 +10,12 @@ require_once 'plans/mega.php';
 
 class Model
 {
+	/**
+	 * @param string $inputted
+	 * @return iAccount
+	 *
+	 * @throws Exception
+	 */
 	public function getAccount($inputted)
 	{
 		if ($inputted === 'normal') {
@@ -23,6 +29,13 @@ class Model
 		}
 	}
 
+	/**
+	 * @param iAccount $account
+	 * @param string   $selected
+	 * @return PlanBase
+	 *
+	 * @throws Exception
+	 */
 	public function getPlan(iAccount $account, $selected)
 	{
 		if ($selected === 'small') {
@@ -46,6 +59,12 @@ class Model
 		}
 	}
 
+	/**
+	 * @param PlanBase $current
+	 * @param PlanBase $next
+	 *
+	 * @throws Exception
+	 */
 	public function change(PlanBase $current, PlanBase $next)
 	{
 		if (!in_array($current->code, $next->fromable)) {

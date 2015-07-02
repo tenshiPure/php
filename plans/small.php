@@ -4,6 +4,9 @@ require_once 'Base.php';
 
 class SmallPlan extends PlanBase
 {
+	/**
+	 * @param iAccount $account
+	 */
 	public function __construct(iAccount $account)
 	{
 		$this->account = $account;
