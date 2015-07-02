@@ -10,5 +10,7 @@ class LargePlan extends PlanBase
 		$this->fee = '7000';
 		$this->name = 'ラージプラン';
 		$this->volume = '5GB';
+		$this->code = 'large';
+		$this->fromable = ['small', 'normal', 'mega'];
 	}
 }

@@ -10,5 +10,7 @@ class NormalPlan extends PlanBase
 		$this->fee = '5000';
 		$this->name = 'ノーマルプラン';
 		$this->volume = '3GB';
+		$this->code = 'normal';
+		$this->fromable = ['small', 'large'];
 	}
 }

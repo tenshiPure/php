@@ -10,5 +10,7 @@ class SmallPlan extends PlanBase
 		$this->fee = '3000';
 		$this->name = 'スモールプラン';
 		$this->volume = '1GB';
+		$this->code = 'small';
+		$this->fromable = [];
 	}
 }

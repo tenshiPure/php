@@ -27,7 +27,7 @@ try {
 	exit;
 }
 
-echo 'next plan? small/normal/large(/mega) : ';
+echo 'next plan? normal/large(/mega) : ';
 $inputtedNextPlan = trim(fgets(STDIN));
 
 try {
@@ -41,5 +41,12 @@ echo "\n";
 
 $account->announce();
 
-$model->change($currentPlan, $nextPlan);
-$nextPlan->show();
+try {
+	$model->change($currentPlan, $nextPlan);
+	$nextPlan->show();
+
+} catch (Exception $e) {
+	echo $e->getMessage();
+	exit;
+}
+

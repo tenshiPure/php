@@ -48,6 +48,10 @@ class Model
 
 	public function change(PlanBase $current, PlanBase $next)
 	{
+		if (!in_array($current->code, $next->fromable)) {
+			throw new Exception("{$current->name}から{$next->name}への変更は不可能です。\n");
+		}
+
 		echo "{$current->name}から{$next->name}に変更しました。\n";
 	}
 }

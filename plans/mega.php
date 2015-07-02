@@ -10,5 +10,7 @@ class MegaPlan extends PlanBase
 		$this->fee = '9000';
 		$this->name = 'メガプラン';
 		$this->volume = '7GB';
+		$this->code = 'mega';
+		$this->fromable = ['small', 'normal', 'large'];
 	}
 }

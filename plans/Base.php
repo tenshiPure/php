@@ -7,6 +7,8 @@ class PlanBase
 	public $name;
 	protected $fee;
 	protected $volume;
+	public $code;
+	public $fromable;
 
 	public function show()
 	{
