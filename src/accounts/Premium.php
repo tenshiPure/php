@@ -4,6 +4,14 @@ require_once 'iAccount.php';
 
 class PremiumAccount implements iAccount
 {
+    /**
+     * @return bool
+     */
+	public function isRichPremium()
+	{
+		return false;
+	}
+
 	/**
 	 * @return bool
 	 */

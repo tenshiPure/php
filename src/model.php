@@ -2,11 +2,13 @@
 
 require_once 'accounts/normal.php';
 require_once 'accounts/premium.php';
+require_once 'accounts/richpremium.php';
 
 require_once 'plans/small.php';
 require_once 'plans/normal.php';
 require_once 'plans/large.php';
 require_once 'plans/mega.php';
+require_once 'plans/giga.php';
 
 class Model
 {
@@ -23,6 +25,9 @@ class Model
 
 		} elseif ($inputted === 'premium') {
 			return new PremiumAccount($inputted);
+
+		} elseif ($inputted === 'rich') {
+			return new RichPremiumAccount($inputted);
 
 		} else {
 			throw new Exception('選択値不正');
@@ -53,6 +58,13 @@ class Model
 			}
 
 			return new MegaPlan($account);
+
+		} elseif ($selected === 'giga') {
+			if (!$account->isRichPremium()) {
+				throw new Exception('ギガプランはリッチプレミアム会員のみです');
+			}
+
+			return new GigaPlan($account);
 
 		} else {
 			throw new Exception('選択値不正');

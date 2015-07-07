@@ -2,14 +2,14 @@
 
 require_once 'iAccount.php';
 
-class NormalAccount implements iAccount
+class RichPremiumAccount implements iAccount
 {
     /**
      * @return bool
      */
 	public function isRichPremium()
 	{
-		return false;
+		return true;
 	}
 
 	/**
@@ -17,7 +17,7 @@ class NormalAccount implements iAccount
 	 */
 	public function isPremium()
 	{
-		return false;
+		return true;
 	}
 
 	/**
@@ -25,6 +25,6 @@ class NormalAccount implements iAccount
 	 */
 	public function announce()
 	{
-		echo "お知らせ：【プレミアム会員になりませんか】\n\n";
+		echo "お知らせ：【リッチプレミアム会員の継続利用について】\n\n";
 	}
 }

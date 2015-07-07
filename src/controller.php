@@ -4,7 +4,7 @@ require_once 'model.php';
 
 $model = new Model();
 
-echo 'your account? normal/premium : ';
+echo 'your account? normal/premium/rich : ';
 $inputtedAccount = trim(fgets(STDIN));
 
 try {
@@ -16,7 +16,7 @@ try {
 }
 
 
-echo 'current plan? small/normal/large(/mega) : ';
+echo 'current plan? small/normal/large(/mega)(/giga) : ';
 $inputtedCurrentPlan = trim(fgets(STDIN));
 
 try {
@@ -27,7 +27,7 @@ try {
 	exit;
 }
 
-echo 'next plan? normal/large(/mega) : ';
+echo 'next plan? normal/large(/mega)(/giga) : ';
 $inputtedNextPlan = trim(fgets(STDIN));
 
 try {
