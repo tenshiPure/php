@@ -33,14 +33,6 @@ class PlanBase
 	 */
 	private function calcFee()
 	{
-		if ($this->account->isRichPremium()) {
-			return $this->fee - 2000;
-
-		} elseif ($this->account->isPremium()) {
-			return $this->fee - 1000;
-
-		} else {
-			return $this->fee;
-		}
+		return $this->fee - $this->account->getDiscountPrice();
 	}
 }

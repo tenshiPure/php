@@ -27,4 +27,12 @@ class NormalAccount implements iAccount
 	{
 		echo "お知らせ：【プレミアム会員になりませんか】\n\n";
 	}
+
+	/**
+	 * @return int
+	 */
+	public function getDiscountPrice()
+	{
+		return 0;
+	}
 }

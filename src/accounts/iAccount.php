@@ -16,4 +16,9 @@ interface iAccount
      *
      */
     public function announce();
+
+	/**
+	 * @return int
+	 */
+	public function getDiscountPrice();
 }

@@ -27,4 +27,12 @@ class PremiumAccount implements iAccount
 	{
 		echo "お知らせ：【プレミアム会員の継続利用について】\n\n";
 	}
+
+	/**
+	 * @return int
+	 */
+	public function getDiscountPrice()
+	{
+		return 1000;
+	}
 }

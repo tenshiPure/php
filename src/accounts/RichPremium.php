@@ -27,4 +27,12 @@ class RichPremiumAccount implements iAccount
 	{
 		echo "お知らせ：【リッチプレミアム会員の継続利用について】\n\n";
 	}
+
+	/**
+	 * @return int
+	 */
+	public function getDiscountPrice()
+	{
+		return 2000;
+	}
 }
