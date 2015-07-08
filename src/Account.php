@@ -12,6 +12,9 @@ class Account
     private $discount;
 
     /**
+     * コンストラクタを公開しないことで意図しない箇所で意図しない値を持った
+     * インスタンスが生成される可能性を無くすことが出来る
+     *
      * @param string $code
      * @param string $announce
      * @param string $discount
@@ -24,6 +27,9 @@ class Account
     }
 
     /**
+     * このメソッドを通してしかインスタンスを生成できないため
+     * パターンや値の定義が意図しない箇所漏れ出る可能性を無くすことが出来る
+     *
      * @param string $input
      * @return Account
      *
