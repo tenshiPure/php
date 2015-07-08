@@ -1,88 +1,63 @@
 <?php
 
-require_once 'accounts/normal.php';
-require_once 'accounts/premium.php';
-require_once 'accounts/richpremium.php';
-
-require_once 'plans/small.php';
-require_once 'plans/normal.php';
-require_once 'plans/large.php';
-require_once 'plans/mega.php';
-require_once 'plans/giga.php';
+require_once 'Account.php';
+require_once 'Plan.php';
 
 class Model
 {
-	/**
-	 * @param string $inputted
-	 * @return iAccount
-	 *
-	 * @throws Exception
-	 */
-	public function getAccount($inputted)
-	{
-		if ($inputted === 'normal') {
-			return new NormalAccount($inputted);
+    /**
+     * @return Account
+     *
+     * @throws Exception
+     */
+    public function getAccount()
+    {
+        echo 'your account? normal/premium/rich : ';
+        $input = trim(fgets(STDIN));
 
-		} elseif ($inputted === 'premium') {
-			return new PremiumAccount($inputted);
+        return Account::create($input);
+    }
 
-		} elseif ($inputted === 'rich') {
-			return new RichPremiumAccount($inputted);
+    /**
+     * @param Account $account
+     * @return Plan
+     *
+     * @throws Exception
+     */
+    public function getCurrentPlan(Account $account)
+    {
+        echo 'current plan? small/normal/large(/mega)(/giga) : ';
+        $input = trim(fgets(STDIN));
 
-		} else {
-			throw new Exception('選択値不正');
-		}
-	}
+        return Plan::create($input, $account);
+    }
 
-	/**
-	 * @param iAccount $account
-	 * @param string   $selected
-	 * @return PlanBase
-	 *
-	 * @throws Exception
-	 */
-	public function getPlan(iAccount $account, $selected)
-	{
-		if ($selected === 'small') {
-			return new SmallPlan($account);
+    /**
+     * @param Account $account
+     * @return Plan
+     *
+     * @throws Exception
+     */
+    public function getNextPlan(Account $account)
+    {
+        echo 'next plan? normal/large(/mega)(/giga) : ';
+        $input = trim(fgets(STDIN));
 
-		} elseif ($selected === 'normal') {
-			return new NormalPlan($account);
+        return Plan::create($input, $account);
+    }
 
-		} elseif ($selected === 'large') {
-			return new LargePlan($account);
+    /**
+     * @param Plan $current
+     * @param Plan $next
+     *
+     * @throws Exception
+     */
+    public function change(Plan $current, Plan $next)
+    {
+        if (!$current->isChangeable($next)) {
+            throw new Exception("{$current->getName()}から{$next->getName()}への変更は不可能です。\n");
+        }
 
-		} elseif ($selected === 'mega') {
-			if (!$account->isPremium()) {
-				throw new Exception('メガプランはプレミアム会員のみです');
-			}
-
-			return new MegaPlan($account);
-
-		} elseif ($selected === 'giga') {
-			if (!$account->isRichPremium()) {
-				throw new Exception('ギガプランはリッチプレミアム会員のみです');
-			}
-
-			return new GigaPlan($account);
-
-		} else {
-			throw new Exception('選択値不正');
-		}
-	}
-
-	/**
-	 * @param PlanBase $current
-	 * @param PlanBase $next
-	 *
-	 * @throws Exception
-	 */
-	public function change(PlanBase $current, PlanBase $next)
-	{
-		if (!in_array($current->code, $next->fromable)) {
-			throw new Exception("{$current->name}から{$next->name}への変更は不可能です。\n");
-		}
-
-		echo "{$current->name}から{$next->name}に変更しました。\n";
-	}
+        echo "{$current->getName()}から{$next->getName()}に変更しました\n";
+    }
 }
